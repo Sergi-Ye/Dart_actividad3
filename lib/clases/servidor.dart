@@ -1,6 +1,8 @@
 import 'dispositivo.dart';
+import '../mixins/conectividad_wifi.dart';
+import '../mixins/sincronizacion_nube.dart';
 
-class Servidor extends Dispositivo {
+class Servidor extends Dispositivo with ConectividadWifi, SincronizacionNube {
 
   // Constructor
   Servidor({

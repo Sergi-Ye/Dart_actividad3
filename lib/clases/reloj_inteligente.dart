@@ -1,6 +1,8 @@
 import 'dispositivo.dart';
+import '../mixins/conectividad_wifi.dart';
+import '../mixins/vibrar.dart';
 
-class RelojInteligente extends Dispositivo {
+class RelojInteligente extends Dispositivo with ConectividadWifi, Vibrar {
 
   // Constructor
   RelojInteligente({

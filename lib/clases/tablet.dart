@@ -1,6 +1,8 @@
 import 'dispositivo.dart';
+import '../mixins/conectividad_wifi.dart';
+import '../mixins/sincronizacion_nube.dart';
 
-class Tablet extends Dispositivo {
+class Tablet extends Dispositivo with ConectividadWifi, SincronizacionNube {
 
   // Constructor
   Tablet({
