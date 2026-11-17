@@ -1,5 +1,6 @@
-import 'package:actividad_3/actividad_3.dart' as actividad_3;
+import 'package:actividad_3/main.dart' as gestor;
 
+// Entrada del programa al ejecutarlo
 void main(List<String> arguments) {
-  print('Hello world: ${actividad_3.calculate()}!');
+  gestor.main();
 }

@@ -1,4 +1,6 @@
+// Clase base
 class Dispositivo {
+  // Atributos comunes
   int id;
   String marca;
   String modelo;
@@ -12,7 +14,7 @@ class Dispositivo {
     required this.anioFabricacion,
   });
 
-  // Mostrar información del dispositivo
+  // Mostrar información
   @override
   String toString() {
     return 'ID: $id | Marca: $marca | Modelo: $modelo | Año: $anioFabricacion';

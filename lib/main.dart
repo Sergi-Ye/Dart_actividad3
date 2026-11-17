@@ -1,17 +1,21 @@
 import 'dart:io';
-import 'globals.dart';
+import 'clases/dispositivo.dart';
 import 'clases/ordenador.dart';
 import 'clases/tablet.dart';
 import 'clases/reloj_inteligente.dart';
 import 'clases/servidor.dart';
 
+// Lista global de dispositivos creados en el menú.
+List<Dispositivo> dispositivos = [];
+
+//MENÚ PRINCIPAL
 void main() {
 
   int opcion = 0;
 
   while (opcion != 4) {
 
-    print('\n===== GESTOR DE DISPOSITIVOS =====');
+    print('\n--- GESTOR DE DISPOSITIVOS ---');
     print('1. Crear dispositivo');
     print('2. Eliminar dispositivo');
     print('3. Modificar dispositivo');
@@ -44,7 +48,6 @@ void main() {
   }
 }
 
-
 void crearDispositivo() {
 
   print('\n===== CREAR DISPOSITIVO =====');
@@ -56,7 +59,7 @@ void crearDispositivo() {
   stdout.write('Selecciona el tipo de dispositivo: ');
   int tipo = int.parse(stdin.readLineSync()!);
 
-  // Pedir datos comunes
+  // Datos comunes heredados de la clase Dispositivo
   stdout.write('Introduce el ID: ');
   int id = int.parse(stdin.readLineSync()!);
 
@@ -69,9 +72,8 @@ void crearDispositivo() {
   stdout.write('Introduce el año de fabricación: ');
   int anio = int.parse(stdin.readLineSync()!);
 
-  // Crear dispositivo según el tipo seleccionado
+  // Switch con las opciones
   switch (tipo) {
-
     case 1:
       dispositivos.add(Ordenador(
         id: id,
@@ -80,7 +82,6 @@ void crearDispositivo() {
         anioFabricacion: anio,
       ));
       break;
-
     case 2:
       dispositivos.add(Tablet(
         id: id,
@@ -89,7 +90,6 @@ void crearDispositivo() {
         anioFabricacion: anio,
       ));
       break;
-
     case 3:
       dispositivos.add(RelojInteligente(
         id: id,
@@ -98,7 +98,6 @@ void crearDispositivo() {
         anioFabricacion: anio,
       ));
       break;
-
     case 4:
       dispositivos.add(Servidor(
         id: id,
@@ -107,15 +106,12 @@ void crearDispositivo() {
         anioFabricacion: anio,
       ));
       break;
-
     default:
       print('Tipo de dispositivo incorrecto.');
       return;
   }
-
   print('Dispositivo creado correctamente.');
 }
-
 
 
 void mostrarDispositivos() {
@@ -125,13 +121,12 @@ void mostrarDispositivos() {
     return;
   }
 
-  print('\n===== LISTA DE DISPOSITIVOS =====');
+  print('\n--- LISTA DE DISPOSITIVOS ---');
 
   for (var dispositivo in dispositivos) {
     print(dispositivo);
   }
 }
-
 
 
 void eliminarDispositivo() {
@@ -156,7 +151,6 @@ void eliminarDispositivo() {
 }
 
 
-
 void modificarDispositivo() {
 
   mostrarDispositivos();
@@ -168,7 +162,7 @@ void modificarDispositivo() {
   stdout.write('Introduce el ID del dispositivo que quieres modificar: ');
   int id = int.parse(stdin.readLineSync()!);
 
-  // Buscar dispositivo
+  // Buscar el dispositivo por su identificador
   var dispositivo = dispositivos.where((d) => d.id == id).firstOrNull;
 
   if (dispositivo == null) {
@@ -176,7 +170,7 @@ void modificarDispositivo() {
     return;
   }
 
-  // Modificar datos
+  // Modificar los datos comunes del dispositivo encontrado
   stdout.write('Nueva marca: ');
   dispositivo.marca = stdin.readLineSync()!;
 
